@@ -1,10 +1,11 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
+import { store } from '../../app/store';
+import App from '../../App';
 import { isAsyncThunkAction } from '@reduxjs/toolkit';
-import { redditJson } from '../../utils';
+import { redditJson, jsonToTitle } from '../../utils';
+import Post from './Post';
 
 
 describe('video post component', () => {
@@ -14,10 +15,13 @@ describe('video post component', () => {
     it('renders title', () => {
         
         const testURL = 'https://www.reddit.com/r/nextfuckinglevel/comments/o2zx46/you_think_you_could_do_this.json';
-        const post = redditJson(testURL);
-        
+        //const post = redditJson(testURL);
+        //const title = jsonToTitle(redditJson(testURL));
+
         render(
-            <Post post={post}/>
+            <Provider store={store}>
+                <Post />
+            </Provider>
         );
         
           expect(screen.getByText('You think you could do this?')).toBeVisible();
@@ -45,14 +49,4 @@ describe('video post component', () => {
 
     });
 
-});
-
-test('renders learn react link', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-
-  expect(getByText(/learn/i)).toBeInTheDocument();
 });
