@@ -41,11 +41,15 @@ function Post (props) {
                     if ( post.score > 999) {
                         const scoreK = Math.round(post.score / 100) / 10;
                         formattedScore = `${scoreK}k`;
+                    } else {
+                        formattedScore = `${post.score}`;
                     }
+
                     if ( post.numComments > 999) {
                         const commentsK = Math.round(post.numComments /100) / 10;
-                        formattedComments = `${commentsK}k`;
-
+                        formattedComments = `${commentsK}k comments`;
+                    } else {
+                        formattedComments = `${post.numComments} comments`;
                     }
 
 
