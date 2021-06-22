@@ -13,7 +13,8 @@ const options = {
         deletePost: (state, action) => {
             return state.filter( post => post !== action.payload);
         },
-        resetPosts: (state) => []
+        resetPosts: (state) => [],
+        loadPosts: (state, action) => action.payload
     }
 }
 
@@ -26,19 +27,5 @@ export const selectPosts = (state) => state.postList;  // return array of posts
 
 // export action creators and reducers
 
-export const { addPost, deletePost, resetPosts } = postListSlice.actions;
+export const { loadPosts, addPost, deletePost, resetPosts } = postListSlice.actions;
 export default postListSlice.reducer;
-
-/*  
-Post Object Format:
-
-const testPost = {
-    title:,
-    author:,
-    subreddit:,
-    contentLink:,
-    numComments:,
-    score:
-}
-
- */

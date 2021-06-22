@@ -4,33 +4,37 @@ export const redditPost = async (url) => {
 
     //from array list
     const jsonArray = await redditList(url);
-    const data = jsonArray[3];
+    //const data = jsonArray[3];
 
+    const formattedPosts = jsonArray.map((data) => {
+        //Extract relevant fields from JSON data
+        const title = getTitle(data);
+        const author = getAuthor(data);
+        const subreddit = getSubreddit(data);
+        const imageURL = getImageURL(data);
+        const videoURL = getVideoURL(data);
+        const numComments = getNumComments(data);
+        const score = getScore(data);
+        const datePosted = getDate(data);
+        // Create post object
+        const post = {
+            title: title,
+            author: author,
+            subreddit:subreddit,
+            imageURL: imageURL,
+            videoURL: videoURL,
+            numComments: numComments,
+            score: score,
+            datePosted: datePosted
+        }
+        return post;
+    });
+
+    return formattedPosts;
     // directly from post
     //const response = await fetch(url);
     //const data = await response.json();
     
-    //Extract relevant fields from JSON data
-    const title = getTitle(data);
-    const author = getAuthor(data);
-    const subreddit = getSubreddit(data);
-    const imageURL = getImageURL(data);
-    const videoURL = getVideoURL(data);
-    const numComments = getNumComments(data);
-    const score = getScore(data);
-    const datePosted = getDate(data);
-    // Create post object
-    const post = {
-        title: title,
-        author: author,
-        subreddit:subreddit,
-        imageURL: imageURL,
-        videoURL: videoURL,
-        numComments: numComments,
-        score: score,
-        datePosted: datePosted
-    }
-    return post;
 
 };
 
@@ -92,7 +96,9 @@ function getImageURL (post) {
 }
 function getVideoURL (post) {
     if (post.data.secure_media) {
-        return post.data.secure_media.reddit_video.fallback_url;
+        if(post.data.secure_media.reddit_video){
+            return post.data.secure_media.reddit_video.fallback_url;
+        }
     }
     return '';
 }
