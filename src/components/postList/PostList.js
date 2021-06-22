@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPosts, addPost, resetPosts } from './postListSlice';
 import Post from '../post/Post';
-import { redditJson } from '../../utils';
+import { redditPost } from '../../utils';
 
 function PostList (props) {
 
@@ -26,17 +26,24 @@ function PostList (props) {
     
     // End testing component
 
-    // Test fetching data
-    
+    // Test fetching single post data
+    const url1 = 'https://www.reddit.com/r/nextfuckinglevel/comments/o2zx46/you_think_you_could_do_this.json';
+    const url2 = 'https://www.reddit.com/.json';
+
     useEffect(() => {
-        redditJson('https://www.reddit.com/r/nextfuckinglevel/comments/o2zx46/you_think_you_could_do_this.json')
+        dispatch(resetPosts());
+        redditPost(url2)
             .then(post => {
                 dispatch(addPost(post));
             });
     }, []);
     
-
     // End test fetching data
+
+    // Test fetching list of posts from homepage
+
+
+    // End Test fetching list of posts from homepage
 
     const posts = useSelector(selectPosts)
 
