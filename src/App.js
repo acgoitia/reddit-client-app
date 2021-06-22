@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import  Post  from './components/post/Post'
+import  PostList  from './components/postList/PostList'
 
 function App() {
   
   return (
-    <Post />
+    <PostList />
   );
 }
 
