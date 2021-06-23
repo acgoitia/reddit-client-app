@@ -1,6 +1,6 @@
 import React from 'react';
 import './post.css';
-import { decodeEntities } from '../../utils';
+import { decodeEntities, getElapsedTime } from '../../utils';
 
 
 
@@ -14,26 +14,7 @@ function Post (props) {
                 posts.map(post => {
                    
                     // time-stamp conversion to elapsed time
-                    const unixDateMs = post.datePosted * 1000;
-                    const now = Date.now();
-                    const timeDiffMs = now - unixDateMs;
-                    const hrs = timeDiffMs / 1000 / 3600;
-                    const days = hrs / 24;
-                    const months = days / 30.44;
-                    const years = days / 365.24;
-                    let timeElapsed;
-                    if (hrs < 24) {
-                        timeElapsed = `${Math.floor(hrs)} hours ago`;
-                    } 
-                    else if (days < 30.44) {
-                        timeElapsed = `${Math.floor(days)} days ago`;
-                    }
-                    else if (months < 12) {
-                        timeElapsed = `${Math.floor(months)} months ago`;
-                    }
-                    else {
-                        timeElapsed = `${Math.floor(years)} years ago`;
-                    }
+                    const timeElapsed = getElapsedTime(post.datePosted)
                     
                     // Reformating score and comment #s
                     let formattedScore;
