@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getTitle, getAuthor, getSubreddit, getImageURL, getVideoURL, getNumComments, getScore, getDate } from '../../utils';
+import { getTitle, getAuthor, getSubreddit, getImageURL, getVideoURL, getNumComments, getScore, getDate, getHtml, getVideoHtml, getLink } from '../../utils';
 
 // use createAsyncThunk to fetch reddit posts list asynchronously with action creator and reducer
 
@@ -17,9 +17,12 @@ export const loadPosts = createAsyncThunk('postList/loadPosts', async (url, thun
         const subreddit = getSubreddit(data);
         const imageURL = getImageURL(data);
         const videoURL = getVideoURL(data);
+        const videoHtml = getVideoHtml(data);
         const numComments = getNumComments(data);
         const score = getScore(data);
         const datePosted = getDate(data);
+        const htmlBody = getHtml(data);
+        const link = getLink(data);
         
         // Create post object
         const post = {
@@ -28,9 +31,12 @@ export const loadPosts = createAsyncThunk('postList/loadPosts', async (url, thun
             subreddit:subreddit,
             imageURL: imageURL,
             videoURL: videoURL,
+            videoHtml: videoHtml,
             numComments: numComments,
             score: score,
-            datePosted: datePosted
+            datePosted: datePosted,
+            htmlBody: htmlBody,
+            link: link
         }
         return post;
     });
