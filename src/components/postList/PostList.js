@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectPosts, loadPosts, resetPosts } from './postListSlice';
+import { selectPosts, resetPosts, loadPosts } from './postListSlice';
 import Post from '../post/Post';
-import { redditPost } from '../../utils';
 
 function PostList (props) {
 
@@ -13,11 +12,8 @@ function PostList (props) {
 
     useEffect(() => {
         dispatch(resetPosts());
-        redditPost(homepage)
-            .then(post => {
-                dispatch(loadPosts(post));
-            });
-    }, []);
+        dispatch(loadPosts(homepage));
+    }, [dispatch]);
     
 
     const posts = useSelector(selectPosts)

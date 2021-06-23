@@ -1,54 +1,37 @@
-// get data from single post page
+// Helper functions - from post List: 
 
-export const redditPost = async (url) => {
-
-    //from array list
-    const jsonArray = await redditList(url);
-    //const data = jsonArray[3];
-
-    const formattedPosts = jsonArray.map((data) => {
-        //Extract relevant fields from JSON data
-        const title = getTitle(data);
-        const author = getAuthor(data);
-        const subreddit = getSubreddit(data);
-        const imageURL = getImageURL(data);
-        const videoURL = getVideoURL(data);
-        const numComments = getNumComments(data);
-        const score = getScore(data);
-        const datePosted = getDate(data);
-        // Create post object
-        const post = {
-            title: title,
-            author: author,
-            subreddit:subreddit,
-            imageURL: imageURL,
-            videoURL: videoURL,
-            numComments: numComments,
-            score: score,
-            datePosted: datePosted
-        }
-        return post;
-    });
-
-    return formattedPosts;
-    // directly from post
-    //const response = await fetch(url);
-    //const data = await response.json();
-    
-
-};
-
-// get data from listing page
-
-export const redditList = async (url) => {
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    const jsonArray = data.data.children;
-    return jsonArray;
+export function getTitle (post) {
+    return post.data.title;
 }
-
+export function getAuthor (post) {
+    return post.data.author;
+}
+export function getSubreddit (post) {
+    return post.data.subreddit_name_prefixed;
+}
+export function getImageURL (post) {
+    if (post.data.url.search(/.jpg/) !== -1){  // see if it links to image
+        return post.data.url;    
+    }
+    return '';
+}
+export function getVideoURL (post) {
+    if (post.data.secure_media) {
+        if(post.data.secure_media.reddit_video){
+            return post.data.secure_media.reddit_video.fallback_url;
+        }
+    }
+    return '';
+}
+export function getNumComments (post) {
+    return post.data.num_comments;
+}
+export function getScore (post) {
+    return post.data.score;
+}
+export function getDate (post) {
+    return post.data.created;
+}
 
 // Helper functions - from post: 
 
@@ -76,38 +59,3 @@ export const redditList = async (url) => {
 // function getDate (post) {
 //     return post[0].data.children[0].data.created;
 // }
-
-// Helper functions - from post List: 
-
-function getTitle (post) {
-    return post.data.title;
-}
-function getAuthor (post) {
-    return post.data.author;
-}
-function getSubreddit (post) {
-    return post.data.subreddit_name_prefixed;
-}
-function getImageURL (post) {
-    if (post.data.url.search(/.jpg/) !== -1){  // see if it links to image
-        return post.data.url;    
-    }
-    return '';
-}
-function getVideoURL (post) {
-    if (post.data.secure_media) {
-        if(post.data.secure_media.reddit_video){
-            return post.data.secure_media.reddit_video.fallback_url;
-        }
-    }
-    return '';
-}
-function getNumComments (post) {
-    return post.data.num_comments;
-}
-function getScore (post) {
-    return post.data.score;
-}
-function getDate (post) {
-    return post.data.created;
-}
