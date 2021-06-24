@@ -99,6 +99,17 @@ export function getElapsedTime (timeStamp) {
 
 }
 
+// Helper function to convert subscriber units
+export function getSubscribers (number) {
+     if (number < 1000) {
+        return `${number} subscribers`;
+     }
+     if (number < 1000000) {
+        return `${Math.floor(number/1000)}K subscribers`;
+     }
+    return `${Math.floor(number/100000)/10}M subscribers`;
+}
+
 // Helper to turn comment data into simpliefied object
 export function getCommentData (commentArray) {
     const commentArrayFiltered = commentArray.filter(comment => comment.kind !== "more")  // remove "more" array with info for next posts/comments
@@ -128,6 +139,21 @@ export function getCommentData (commentArray) {
 
 }
 
+// Helper to turn comment data into simpliefied object
+
+export function getSubRedditData (array) {
+
+    return array.map((el) => {
+        
+        return  {
+            title: el.data.display_name_prefixed,
+            description: el.data.description_html,  // this or .description without html tags
+            id: el.data.id,
+            subscribers: el.data.subscribers
+        }
+    })
+
+}
 
 
 // Helper functions - from post: 
