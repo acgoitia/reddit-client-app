@@ -15,8 +15,10 @@ function CommentList (props) {
          dispatch(loadComments(postLink));
      }, [dispatch]);
      
-     const comments = useSelector(selectComments)
- 
+     const comments = useSelector(selectComments);
+     const isVisibleArray = comments.map(() => false)  // testing passing isVisible via props
+     const isVisibleObj = Object.assign({}, isVisibleArray)  // converts array into object for easier manipulation in state variable
+
      if (isLoading){
          return (
              <h1>Loading...</h1>
@@ -30,7 +32,7 @@ function CommentList (props) {
      }
  
      return (
-         <Comment comments={comments} />
+         <Comment comments={comments} isVisible={isVisibleObj}/>  // need to pass isVisible props also recursively
      )
  
 
