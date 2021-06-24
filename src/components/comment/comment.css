@@ -1,7 +1,8 @@
-.Comment-List {
+.Comments-List {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
 }
 
 .Comment {

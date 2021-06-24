@@ -21,13 +21,17 @@ function CommentList (props) {
 
      if (isLoading){
          return (
-             <h1>Loading...</h1>
+            <div className="Comments-List">
+                <h1>Loading...</h1>
+            </div>
          );
      }
  
      if (hasError){
          return (
-             <h1>Ooops!  Something went wrong and we couldn't fetch data from server.  Reload and try again.</h1>
+            <div className="Comments-List">
+                <h1>Ooops!  Something went wrong and we couldn't fetch data from server.  Reload and try again.</h1>
+            </div>
          );
      }
  
