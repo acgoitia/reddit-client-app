@@ -99,6 +99,35 @@ export function getElapsedTime (timeStamp) {
 
 }
 
+// Helper to turn comment data into simpliefied object
+export function getCommentData (commentArray) {
+    const commentArrayFiltered = commentArray.filter(comment => comment.kind !== "more")  // remove "more" array with info for next posts/comments
+    const filteredComments = commentArrayFiltered.map(comment => {
+            
+    const content = comment.data.body;
+    const author = comment.data.author;
+    var replies = '';
+    if (comment.data.replies){
+        replies = comment.data.replies.data.children;  
+    } 
+    const date = comment.data.created_utc;
+    const link = comment.data.permalink;  // ending of link, starts with r/...
+    
+    const commentObj = {
+        content: content,
+        author: author,
+        replies: replies,
+        date: date,
+        link: link
+    }
+    
+        return commentObj;
+    })
+
+    return filteredComments;
+
+}
+
 
 
 // Helper functions - from post: 

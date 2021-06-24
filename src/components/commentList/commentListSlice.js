@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { getCommentData } from '../../utils';
 
 
 // Async action creator
@@ -7,30 +8,33 @@ export const loadComments = createAsyncThunk('commentList/loadComments', async (
     const jsonData = await response.json();
     
     const commentsArray = jsonData[1].data.children; // array of comments
-    const commentsArrayFiltered = commentsArray.filter(comment => comment.kind !== "more")  // remove "more" array with info for next posts/comments
-    const filteredComments = commentsArrayFiltered.map(comment => {
+    
+    return getCommentData(commentsArray);
+    
+    // const commentsArrayFiltered = commentsArray.filter(comment => comment.kind !== "more")  // remove "more" array with info for next posts/comments
+    // const filteredComments = commentsArrayFiltered.map(comment => {
         
-        const content = comment.data.body;
-        const author = comment.data.author;
-        var replies = '';
-        if (comment.data.replies){
-            replies = comment.data.replies.data.children;  // the "more" array returns reference to other comments
-        } 
-        const date = comment.data.created_utc;
-        const link = comment.data.permalink;  // ending of link, starts with r/...
+    //     const content = comment.data.body;
+    //     const author = comment.data.author;
+    //     var replies = '';
+    //     if (comment.data.replies){
+    //         replies = comment.data.replies.data.children;  // the "more" array returns reference to other comments
+    //     } 
+    //     const date = comment.data.created_utc;
+    //     const link = comment.data.permalink;  // ending of link, starts with r/...
         
-        const commentObj = {
-            content: content,
-            author: author,
-            replies: replies,
-            date: date,
-            link: link
-        }
+    //     const commentObj = {
+    //         content: content,
+    //         author: author,
+    //         replies: replies,
+    //         date: date,
+    //         link: link
+    //     }
         
-            return commentObj;
-    })
+    //         return commentObj;
+    // })
 
-    return filteredComments;
+    // return filteredComments;
 
 })
 

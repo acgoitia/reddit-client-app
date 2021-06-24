@@ -1,5 +1,5 @@
 import React from 'react';
-import { getElapsedTime } from '../../utils';
+import { getCommentData, getElapsedTime } from '../../utils';
 import './comment.css';
 
 
@@ -14,6 +14,10 @@ function Comment (props) {
                    // time-stamp conversion to elapsed time
                     const timeElapsed = getElapsedTime(comment.date)
                     
+                    // Get array of comments embedded in replies key
+                    const repliesArray = comment.replies ? getCommentData(comment.replies) : []; 
+
+
                     return (
                         <div className="Comment">
                             <div className="comment-header">
@@ -29,6 +33,12 @@ function Comment (props) {
                                     <p>view replies</p>
                                 </div>
                             </div>
+                            {
+                                comment.replies && 
+                                (<div className="replies">
+                                    <Comment comments={repliesArray}/>
+                                </div>)
+                            }
                         </div>
                     ) 
                 })
