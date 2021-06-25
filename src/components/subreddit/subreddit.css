@@ -1,0 +1,14 @@
+.subreddit-page {
+    margin-top: 50px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f7fd;
+    position: relative;
+}
+
+.subreddit-title img {
+    border-radius: 50%;
+}

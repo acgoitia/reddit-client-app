@@ -9,12 +9,12 @@ function PostList (props) {
     const { isLoading, hasError } = useSelector((state) => state.postList);
     
     // Load Homepage posts
-    const homepage = 'https://www.reddit.com/.json';
+    const { link } = props;    // const homepage = 'https://www.reddit.com/.json';
 
     useEffect(() => {
         dispatch(resetPosts());
-        dispatch(loadPosts(homepage));
-    }, [dispatch]);
+        dispatch(loadPosts(link));
+    }, [dispatch, link]);
     
     const posts = useSelector(selectPosts)
 
