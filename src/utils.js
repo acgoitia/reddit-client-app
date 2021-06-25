@@ -152,7 +152,8 @@ export function getSubRedditData (array) {
             title: el.data.display_name_prefixed,
             description: el.data.description_html,  // this or .description without html tags
             id: el.data.id,
-            subscribers: el.data.subscribers
+            subscribers: el.data.subscribers,
+            display_name: el.data.display_name
         }
     })
 

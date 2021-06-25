@@ -8,15 +8,18 @@ import './subreddit.css';
 // render heading, sidebar, and <Post /> elements inside with data from the page
 
 function Subreddit (props) {
+    
+    const { match } = props;
     const dispatch = useDispatch();
     const { isLoading, hasError } = useSelector((state) => state.subreddit);
     // Load subreddit data
-    const groupLink = 'https://www.reddit.com/r/AskReddit/about.json'; // currently test link for specific post
+    const groupLink = `https://www.reddit.com/r/${match.params.subreddit}/about.json`; // currently test link for specific post
+    
 
     useEffect(() => {
         dispatch(deleteSubreddit());
         dispatch(loadSubReddit(groupLink));
-    }, [dispatch]);
+    }, [dispatch, groupLink]);
 
     const { name, description, members, online, icon, banner} = useSelector(selectSubReddit);
     const postsLink = `https://www.reddit.com/${name}/.json`; // dyanmically build link to API to download posts from subreddit

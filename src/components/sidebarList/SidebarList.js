@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadSubReddits, resetSubReddits, selectSubReddits } from './sidebarListSlice';
 import { getSubscribers } from '../../utils';
 import './sidebarList.css';
+import { Link } from 'react-router-dom';
 
 
 function SidebarList (props) {
@@ -45,10 +46,12 @@ function SidebarList (props) {
                     //const descHtml = decodeEntities(subReddit.description); -> will need to import from utils
 
                     return (
-                        <div className="sub-reddit">
-                            <h3>{subReddit.title}</h3>
-                            <h4>{getSubscribers(subReddit.subscribers)}</h4>
-                        </div>
+                        <Link to={`/r/${subReddit.display_name}`} >
+                            <div className="sub-reddit">
+                                <h3>{subReddit.title}</h3>
+                                <h4>{getSubscribers(subReddit.subscribers)}</h4>
+                            </div>
+                        </Link>
                     );
                 })
             }

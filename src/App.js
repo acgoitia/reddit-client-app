@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import  PostList  from './components/postList/PostList';
-import  CommentList  from './components/commentList/CommentList';
 import Header from './components/header/Header';
 import SidebarList from './components/sidebarList/SidebarList';
 import Subreddit from './components/subreddit/Subreddit';
@@ -22,14 +21,14 @@ function App() {
             <Route exact path="/">
               <PostList link={homepageLink}/>
             </Route>
-            <Route path="/:id" component={PostwComments} />
+            <Route exact path="/:id" component={PostwComments} />
+            <Route exact path="/r/:subreddit" component={Subreddit} />
           </Switch>
         </main>
       </Router>
     </div>
   );
 }
-//<CommentList />
-//<Subreddit />
+
 
 export default App;

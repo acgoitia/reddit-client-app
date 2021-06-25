@@ -13,7 +13,8 @@ export const loadSubReddit = createAsyncThunk('subreddit/loadSubReddit', async (
         online:jsonData.data.active_user_count,
         icon: jsonData.data.icon_img,
         banner: jsonData.data.banner_img,
-        color: jsonData.data.banner_background_color
+        color: jsonData.data.banner_background_color,
+        display_name: jsonData.data.display_name
     };
     
 })

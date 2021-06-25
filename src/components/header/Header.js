@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
 
 function Header (props) {
@@ -8,7 +9,9 @@ function Header (props) {
 
     return (
         <header>
-            <p>Home</p>
+            <Link to="/">
+                <p>Home</p>
+            </Link>
             <input type="text" placeholder="search..." />
         </header>
     );
