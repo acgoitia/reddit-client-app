@@ -5,18 +5,20 @@ import  CommentList  from './components/commentList/CommentList';
 import Header from './components/header/Header';
 import SidebarList from './components/sidebarList/SidebarList';
 import Subreddit from './components/subreddit/Subreddit';
+import PostwComments from './components/postwComments/PostwComments';
 
 function App() {
   
   return (
     <div>
       <Header />
-      <Subreddit />
+      <SidebarList />
+      <PostwComments />
     </div>
   );
 }
-//<SidebarList />
-//<PostList />
 //<CommentList />
+//<Subreddit />
+//<PostList />
 
 export default App;

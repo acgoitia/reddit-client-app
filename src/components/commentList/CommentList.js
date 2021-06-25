@@ -6,14 +6,15 @@ import Comment from '../comment/Comment';
 function CommentList (props) {
     const dispatch = useDispatch();
     const { isLoading, hasError } = useSelector((state) => state.commentList);
+    const { postLink } = props;
 
      // Load post comments
-     const postLink = 'https://www.reddit.com/r/nextfuckinglevel/comments/o6ewmc/mom_of_the_year/.json'; // currently test link for specific post
+     //const postLink = 'https://www.reddit.com/r/nextfuckinglevel/comments/o6ewmc/mom_of_the_year/.json'; // currently test link for specific post
 
      useEffect(() => {
          dispatch(resetComments());
          dispatch(loadComments(postLink));
-     }, [dispatch]);
+     }, [dispatch, postLink]);
      
      const comments = useSelector(selectComments);
      const isVisibleArray = comments.map(() => false)  // testing passing isVisible via props
