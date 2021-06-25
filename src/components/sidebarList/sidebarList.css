@@ -1,5 +1,6 @@
 .Sidebar-List {
     margin-top: 50px;
+    border-right: 1px solid gray;
 }
 
 .sub-reddit h3 {

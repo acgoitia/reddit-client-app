@@ -1,5 +1,8 @@
 // Helper functions - from post List: 
 
+export function getId (post) {
+    return post.data.id;   // original return post.data.title;
+}
 export function getTitle (post) {
     return post.data.title;   // original return post.data.title;
 }

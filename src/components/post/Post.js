@@ -1,12 +1,17 @@
 import React from 'react';
 import './post.css';
 import { decodeEntities, getElapsedTime } from '../../utils';
-
+import { Link } from 'react-router-dom';
 
 
 function Post (props) {
-    
+    //const dispatch = useDispatch
     const { posts } = props;
+
+    // Link makes sure state changes and also changes path which will be hadled by switch
+    // function handleCommentClick ({target}) {
+    //     dispatch(selectPost(target.id))
+    // }
 
     return (
         <div className="Post-List">
@@ -58,10 +63,12 @@ function Post (props) {
                                     <p>{formattedScore}</p>
                                     <i className="fas fa-arrow-down"></i>
                                 </div>
-                                <div className="comments">
-                                    <i className="fas fa-comment-alt"></i>
-                                    <p>{formattedComments}</p>
-                                </div>
+                                <Link to={`/${post.id}`} >
+                                    <div className="comments" >
+                                        <i className="fas fa-comment-alt"></i>
+                                        <p>{formattedComments}</p>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     )
@@ -73,3 +80,5 @@ function Post (props) {
 }
 
 export default Post;
+
+//onClick={handleCommentClick} id={post.id}

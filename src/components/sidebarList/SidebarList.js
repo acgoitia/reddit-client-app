@@ -38,6 +38,7 @@ function SidebarList (props) {
  
      return (
         <div className="Sidebar-List">
+            <h2>Popular Subreddits</h2>
             {
                 subReddits.map((subReddit) => {
                     // formatting descrition html

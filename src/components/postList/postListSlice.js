@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getTitle, getAuthor, getSubreddit, getImageURL, getVideoURL, getNumComments, getScore, getDate, getHtml, getVideoHtml, getLink } from '../../utils';
+import { getId, getTitle, getAuthor, getSubreddit, getImageURL, getVideoURL, getNumComments, getScore, getDate, getHtml, getVideoHtml, getLink } from '../../utils';
 
 // use createAsyncThunk to fetch reddit posts list asynchronously with action creator and reducer
 
@@ -12,6 +12,7 @@ export const loadPosts = createAsyncThunk('postList/loadPosts', async (url, thun
     const formattedPosts = jsonArray.map((data) => {
         
         //Extract relevant fields from JSON data
+        const id = getId(data);
         const title = getTitle(data);
         const author = getAuthor(data);
         const subreddit = getSubreddit(data);
@@ -26,6 +27,7 @@ export const loadPosts = createAsyncThunk('postList/loadPosts', async (url, thun
         
         // Create post object
         const post = {
+            id: id,
             title: title,
             author: author,
             subreddit:subreddit,
@@ -65,6 +67,10 @@ const options = {
         },
         resetPosts: (state) => {
             state.posts = []
+        },
+        selectPost: (state, action) => {
+            const selectedPost = state.posts.filter(post => post.id === action.payload)
+            state.posts = selectedPost;
         }
     },
     extraReducers: {
@@ -93,5 +99,5 @@ export const selectPosts = (state) => state.postList.posts;  // return array of 
 
 // export action creators and reducers
 
-export const { addPost, deletePost, resetPosts } = postListSlice.actions;
+export const { addPost, deletePost, resetPosts, selectPost } = postListSlice.actions;
 export default postListSlice.reducer;
