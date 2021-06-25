@@ -18,9 +18,9 @@ function App() {
         <main>
           <SidebarList />
           <Switch>
-            <Route exact path="/">
-              <PostList link={homepageLink}/>
-            </Route>
+            <Route exact path="/" render={(props) => (
+              <PostList {...props} link={homepageLink} />
+            )} />
             <Route exact path="/:id" component={PostwComments} />
             <Route exact path="/r/:subreddit" component={Subreddit} />
           </Switch>

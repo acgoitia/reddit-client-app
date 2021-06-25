@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPosts, resetPosts, loadPosts } from './postListSlice';
 import Post from '../post/Post';
+import './postList.css';
 
 function PostList (props) {
 
@@ -9,7 +10,7 @@ function PostList (props) {
     const { isLoading, hasError } = useSelector((state) => state.postList);
     
     // Load Homepage posts
-    const { link } = props;    // const homepage = 'https://www.reddit.com/.json';
+    const { link, match } = props;    // const homepage = 'https://www.reddit.com/.json';
 
     useEffect(() => {
         dispatch(resetPosts());
@@ -21,7 +22,7 @@ function PostList (props) {
     if (isLoading){
         return (
             <div className="Post-List">
-                <h1>Loading...</h1>
+                <h1 className="loading">Loading...</h1>
             </div>
         );
     }
@@ -29,13 +30,16 @@ function PostList (props) {
     if (hasError){
         return (
             <div className="Post-List">
-                <h1>Ooops!  Something went wrong and we couldn't fetch data from server.  Reload and try again.</h1>
+                <h1 className="error">Ooops!  Something went wrong and we couldn't fetch data from server.  Reload and try again.</h1>
             </div>
         );
     }
 
     return (
-        <Post posts={posts} />
+        <div className="Post-List">
+            {match && ((match.path === "/") && <h2>Popular Posts</h2>)}
+            <Post posts={posts} />
+        </div>
     )
 
 }

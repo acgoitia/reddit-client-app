@@ -1,0 +1,17 @@
+.Post-List {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.Post-List .loading, .Post-List .error  {
+    color: #009688;
+    font-size: 1.5em;
+}
+
+.Post-List h2 {
+    text-align: center;
+    font-weight: normal;
+}

@@ -24,7 +24,8 @@ function SidebarList (props) {
      if (isLoading){
          return (
             <div className="Sidebar-List">
-                <h1>Loading...</h1>
+                <h2>Popular Subreddits</h2>
+                <h2 className="loading">...</h2>
             </div>
          );
      }
@@ -32,7 +33,8 @@ function SidebarList (props) {
      if (hasError){
          return (
             <div className="Sidebar-List">
-                <h1>Ooops!  Something went wrong and we couldn't fetch data from server.  Reload and try again.</h1>
+                <h2>Popular Subreddits</h2>
+                <h2 className="error">Ooops!  Something went wrong.  Reload and try again.</h2>
             </div>
          );
      }

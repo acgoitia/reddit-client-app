@@ -14,7 +14,7 @@ function Post (props) {
     // }
 
     return (
-        <div className="Post-List">
+        <div className="Post-List-sub">
             {
                 posts.map(post => {
                    
@@ -46,7 +46,9 @@ function Post (props) {
                     return (
                         <div className="Post">
                             <div className="post-header">
-                                <p>{post.subreddit}</p>
+                                <Link to={`/${post.subreddit}`}>
+                                    <p className="subreddit">{post.subreddit}</p>
+                                </Link>
                                 <p>{`Posted by u/${post.author}`}</p>
                                 <p>{timeElapsed}</p>
                             </div>

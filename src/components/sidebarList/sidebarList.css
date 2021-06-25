@@ -1,6 +1,34 @@
 .Sidebar-List {
     margin-top: 50px;
     border-right: 1px solid gray;
+    width: 300px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.Sidebar-List .loading, .Sidebar-List .error {
+    text-align: center;
+}
+
+.Sidebar-List h2 {
+    text-align: center;
+    font-weight: normal;
+}
+
+.sub-reddit {
+    margin-left: 20px;
+}
+
+.Sidebar-List a {
+    color: black;
+}
+
+.Sidebar-List a:link, .Sidebar-List a:visited, .Sidebar-List a:active {
+    text-decoration: none;
+} 
+
+.Sidebar-List a:hover {
+    color: #009688;
 }
 
 .sub-reddit h3 {
@@ -9,4 +37,5 @@
 
 .sub-reddit h4 {
     margin-top: 0;
+    font-weight: normal;
 }

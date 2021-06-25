@@ -1,27 +1,41 @@
-.Post-List {
+.Post-List-sub {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    width: 100%;
 }
 
 .Post {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
-    width: 100%;
+    width: 85%;
     border: 1px solid gray;
-    border-radius: 2%;
+    border-radius: 10px;
     align-items: center;
     margin: 10px;
+}
+
+.Post a:link, .Post a:visited, .Post a:active {
+    text-decoration: none;
+} 
+
+.Post a:hover {
+    color: #009688;
 }
 
 .post-header {
     width: 100%;
     display: inline-flex;
     justify-content: space-evenly;
+    color: gray;
 
 }
+
+.post-header a {
+    font-weight: 600;
+    color: black;
+}
+
 
 .post-header p {
     width: auto;
@@ -36,9 +50,13 @@
     align-items: center;
 }
 
+.post-body h1 {
+    font-size: 1.5em;
+}
+
 .post-body video, .post-body img {
     width: 100%;
-    border-radius: 2%;
+    border-radius: 10px;
 }
 
 table, th, td {
@@ -71,10 +89,16 @@ th {
     width: auto;
 }
 
+.post-footer a {
+    color: gray;
+}
+
+
 .score {
     display: inline-flex;
     align-items: center;
     justify-content: space-evenly;
+    color: gray;
 }
 
 .score p, .comments p {
