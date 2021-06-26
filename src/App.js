@@ -6,6 +6,7 @@ import SidebarList from './components/sidebarList/SidebarList';
 import Subreddit from './components/subreddit/Subreddit';
 import PostwComments from './components/postwComments/PostwComments';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ScrollToTop from './components/scrollToTop/ScrollToTop';
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
   return (
     <div>
       <Router>
+        <ScrollToTop />
         <Header />
         <main>
           <SidebarList />
