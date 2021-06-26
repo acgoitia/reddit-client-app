@@ -51,7 +51,7 @@ function SidebarList (props) {
                         <Link to={`/r/${subReddit.display_name}`} >
                             <div className="sub-reddit">
                                 <h3>{subReddit.title}</h3>
-                                <h4>{getSubscribers(subReddit.subscribers)}</h4>
+                                <h4>{`${getSubscribers(subReddit.subscribers)} subscribers`}</h4>
                             </div>
                         </Link>
                     );

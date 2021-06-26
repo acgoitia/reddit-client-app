@@ -105,12 +105,12 @@ export function getElapsedTime (timeStamp) {
 // Helper function to convert subscriber units
 export function getSubscribers (number) {
      if (number < 1000) {
-        return `${number} subscribers`;
+        return `${number}`;
      }
      if (number < 1000000) {
-        return `${Math.floor(number/1000)}K subscribers`;
+        return `${Math.floor(number/1000)}K`;
      }
-    return `${Math.floor(number/100000)/10}M subscribers`;
+    return `${Math.floor(number/100000)/10}M`;
 }
 
 // Helper to turn comment data into simpliefied object

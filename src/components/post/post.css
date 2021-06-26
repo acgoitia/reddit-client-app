@@ -26,7 +26,7 @@
 .post-header {
     width: 100%;
     display: inline-flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     color: gray;
 
 }

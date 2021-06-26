@@ -3,6 +3,7 @@ import PostList from '../postList/PostList';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadSubReddit, deleteSubreddit, selectSubReddit } from './subredditSlice';
 import './subreddit.css';
+import { getSubscribers } from '../../utils';
 
 // Make page that displays a box on top with basic subreddit info, and righ-hand sidebar with related subreddits if available
 // render heading, sidebar, and <Post /> elements inside with data from the page
@@ -15,6 +16,8 @@ function Subreddit (props) {
     // Load subreddit data
     const groupLink = `https://www.reddit.com/r/${match.params.subreddit}/about.json`; // currently test link for specific post
     
+    const defaultIconUrl = "https://i.redd.it/snoovatar/snoovatars/8658e16c-55fa-486f-b7c7-00726de2e742.png";
+    const defaultBannerUrl = "https://b.thumbs.redditmedia.com/VQ9Hvimc-54M7j6m2Ye1Bpix_iiaXh5ulYhUwkcyqqA.png";
 
     useEffect(() => {
         dispatch(deleteSubreddit());
@@ -42,16 +45,21 @@ function Subreddit (props) {
 
     return (
         <div className="subreddit-page">
-            <img src={banner} alt="banner"/>
             <div className="container">
+                <div className="banner" style={{
+                    backgroundImage: `url(${banner? banner : defaultBannerUrl})`,
+                    backgroundPosition: `center`,
+                    backgroundRepeat: `no-repeat`,
+                    backgroundSize: `cover`,
+                }}></div>
                 <div className="subreddit-title">
-                    <img src={icon} alt="icon"/>
+                    <img src={icon ? icon : defaultIconUrl} alt="icon"/>
                     <h3>{name}</h3>
+                    <p>{description}</p>
                 </div>
-                <p>{description}</p>
                 <div className="subreddit-members">
-                    <p>{`${members} Members`}</p>
-                    <p>{`${online} Online`}</p>
+                    <p className="members">{`${getSubscribers(members)} Members`}</p>
+                    <p className="online">{`${getSubscribers(online)} Online`}</p>
                 </div>
             </div>
             <PostList link={postsLink} />
