@@ -23,7 +23,7 @@ function CommentList (props) {
      if (isLoading){
          return (
             <div className="Comments-List">
-                <h1>Loading...</h1>
+                <h1 className="loading">Loading...</h1>
             </div>
          );
      }
@@ -31,7 +31,7 @@ function CommentList (props) {
      if (hasError){
          return (
             <div className="Comments-List">
-                <h1>Ooops!  Something went wrong and we couldn't fetch data from server.  Reload and try again.</h1>
+                <h1 className="error">Ooops!  Something went wrong.  Reload and try again.</h1>
             </div>
          );
      }

@@ -35,8 +35,8 @@ function Comment (props) {
                             </div>
                             <div className="comment-footer">
                                 {
-                                    comment.replies && (<button onClick={handleClickEvent} value={index}  // click event sends relevant index as value to the event handler, so we can only modify the relevant element state value;
-                                    >view replies</button>) 
+                                    comment.replies && ((comment.replies[0].kind !== "more") && (<button onClick={handleClickEvent} value={index}  // click event sends relevant index as value to the event handler, so we can only modify the relevant element state value;
+                                    >view replies</button>)) 
                                 }
                             </div>
                             {   //Only render nested comments if relplies exist & user has toggled state.  Create isVisible object directly with new replies array.

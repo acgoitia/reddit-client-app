@@ -3,6 +3,7 @@ import Post from '../post/Post';
 import CommentList from '../commentList/CommentList';
 import { useSelector } from 'react-redux';
 import { selectPosts } from '../postList/postListSlice';
+import './postwComments.css';
 
 
 function PostwComments (props) {
@@ -16,8 +17,10 @@ function PostwComments (props) {
 
 
     return (
-        <div className="main">
-            <Post posts={renderedPost} />  
+        <div className="Post-with-comments">
+            <div className="fixed-post" id="exception">
+                <Post posts={renderedPost} />  
+            </div>
             <CommentList postLink={postLink} />  
         </div>
 

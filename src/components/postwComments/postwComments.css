@@ -1,0 +1,33 @@
+.Post-with-comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.fixed-post {
+    border-bottom: 1px solid white;
+    width: 100%;
+    background-color: #b2dfdb;
+
+}
+
+/*Need to find a way to override post default for when it is fixed above...*/
+.fixed-post .Post    {
+    background-color: #009688;
+    color: white;
+    border: 1px solid white;
+    margin: 20px auto;    
+}
+
+.fixed-post .post-header, .fixed-post .subreddit, .fixed-post .score, .fixed-post .comments    {
+    color: white;    
+}
+
+.fixed-post .subreddit:hover  {
+    background-color: #80cbc4;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
