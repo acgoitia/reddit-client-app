@@ -8,11 +8,6 @@ function Post (props) {
     //const dispatch = useDispatch
     const { posts } = props;
 
-    // Link makes sure state changes and also changes path which will be hadled by switch
-    // function handleCommentClick ({target}) {
-    //     dispatch(selectPost(target.id))
-    // }
-
     return (
         <div className="Post-List-sub">
             {

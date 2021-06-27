@@ -9,8 +9,7 @@ function CommentList (props) {
     const { postLink } = props;
 
      // Load post comments
-     //const postLink = 'https://www.reddit.com/r/nextfuckinglevel/comments/o6ewmc/mom_of_the_year/.json'; // currently test link for specific post
-
+     
      useEffect(() => {
          dispatch(resetComments());
          dispatch(loadComments(postLink));

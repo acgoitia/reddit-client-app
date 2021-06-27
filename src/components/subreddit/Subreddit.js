@@ -5,8 +5,6 @@ import { loadSubReddit, deleteSubreddit, selectSubReddit } from './subredditSlic
 import './subreddit.css';
 import { getSubscribers } from '../../utils';
 
-// Make page that displays a box on top with basic subreddit info, and righ-hand sidebar with related subreddits if available
-// render heading, sidebar, and <Post /> elements inside with data from the page
 
 function Subreddit (props) {
     

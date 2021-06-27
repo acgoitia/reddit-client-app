@@ -45,8 +45,7 @@ function SidebarList (props) {
             {
                 subReddits.map((subReddit) => {
                     // formatting descrition html
-                    //const descHtml = decodeEntities(subReddit.description); -> will need to import from utils
-
+                    
                     return (
                         <Link to={`/r/${subReddit.display_name}`} >
                             <div className="sub-reddit">

@@ -9,8 +9,8 @@ function PostList (props) {
     const dispatch = useDispatch();
     const { isLoading, hasError } = useSelector((state) => state.postList);
     
-    // Load Homepage posts
-    const { link, match, endpoint } = props;    // const homepage = 'https://www.reddit.com/.json';
+    
+    const { link, match, endpoint } = props;  
 
     useEffect(() => {
         dispatch(resetPosts());

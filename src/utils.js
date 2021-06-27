@@ -159,30 +159,3 @@ export function getSubRedditData (array) {
 
 }
 
-
-// Helper functions - from post: 
-
-// function getTitle (post) {
-//     return post[0].data.children[0].data.title;
-// }
-// function getAuthor (post) {
-//     return post[0].data.children[0].data.author;
-// }
-// function getSubreddit (post) {
-//     return post[0].data.children[0].data.subreddit_name_prefixed;
-// }
-// function getImageURL (post) {
-//     return post[0].data.children[0].data.url;
-// }
-// function getVideoURL (post) {
-//     return post[0].data.children[0].data.secure_media.reddit_video.fallback_url;
-// }
-// function getNumComments (post) {
-//     return post[0].data.children[0].data.num_comments;
-// }
-// function getScore (post) {
-//     return post[0].data.children[0].data.score;
-// }
-// function getDate (post) {
-//     return post[0].data.children[0].data.created;
-// }
