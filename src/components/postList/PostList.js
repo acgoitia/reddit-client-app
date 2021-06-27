@@ -10,7 +10,7 @@ function PostList (props) {
     const { isLoading, hasError } = useSelector((state) => state.postList);
     
     // Load Homepage posts
-    const { link, match } = props;    // const homepage = 'https://www.reddit.com/.json';
+    const { link, match, endpoint } = props;    // const homepage = 'https://www.reddit.com/.json';
 
     useEffect(() => {
         dispatch(resetPosts());
@@ -38,6 +38,7 @@ function PostList (props) {
     return (
         <div className="Post-List">
             {match && ((match.path === "/") && <h2>Popular Posts</h2>)}
+            {match && ((match.path === `/search/${endpoint}`) && <h2>{`Search results for: ${endpoint}`}</h2>)}
             <Post posts={posts} />
         </div>
     )

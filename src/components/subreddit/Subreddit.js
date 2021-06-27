@@ -30,15 +30,15 @@ function Subreddit (props) {
         
     if (isLoading){
         return (
-            <div className="Subreddit-page">
+            <div className="subreddit-page">
                 <h1>Loading...</h1>
             </div>
         );
     }
     if (hasError){
         return (
-           <div className="Subreddit-page">
-               <h1>Ooops!  Something went wrong and we couldn't fetch data from server.  Reload and try again.</h1>
+           <div className="subreddit-page">
+               <h1>Ooops!  Something went wrong.  Reload and try again.</h1>
            </div>
         );
     }
