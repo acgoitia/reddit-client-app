@@ -9,7 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
     <Provider store={store}>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename="/reddit-client-app">
         <App />
       </Router>
     </Provider>,
